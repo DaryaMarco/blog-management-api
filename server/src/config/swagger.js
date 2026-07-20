@@ -24,8 +24,10 @@ const options = {
     },    
     servers: [
       {
-        url: process.env.API_URL || "http://localhost:5000",
-
+url:
+      process.env.NODE_ENV === "production"
+        ? "https://gym-management-system-htx3.onrender.com"
+        : "http://localhost:5000",
       },
     ],
   },
