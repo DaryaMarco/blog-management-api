@@ -10,7 +10,7 @@ logs/
 *.log
 npm-debug.log*
 
-# Coverage
+# Coverage (Jest)
 coverage/
 
 # OS files
@@ -24,3 +24,10 @@ Thumbs.db
 # Build
 dist/
 build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# MongoDB local data (if used)
+data/
