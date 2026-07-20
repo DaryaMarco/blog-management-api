@@ -1,3 +1,14 @@
+# Gym Management System
+
+![Node.js](https://img.shields.io/badge/Node.js-24.x-green)
+![Express](https://img.shields.io/badge/Express-5.x-black)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![Jest](https://img.shields.io/badge/Test-Jest-red)
+![Swagger](https://img.shields.io/badge/API-Swagger-brightgreen)
+![Render](https://img.shields.io/badge/Deploy-Render-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 # Gym Management API
 
 A RESTful API for a Gym Management System built with Node.js, Express.js, MongoDB, and modern backend practices.
@@ -211,8 +222,39 @@ Test coverage includes:
 Swagger documentation is available at:
 
 ```
-http://localhost:5000/api-docs
-```
+https://gym-management-system-htx3.onrender.com/api-docs
+
+---
+
+## Live Demo
+
+API:
+
+https://gym-management-system-htx3.onrender.com
+
+Swagger:
+
+https://gym-management-system-htx3.onrender.com/api-docs
+
+---
+
+## Screenshots
+
+### Swagger Documentation
+
+![Swagger](assets/images/swagger-ui.png)
+
+---
+
+### Live API on Render
+
+![Render](assets/images/live-api.png)
+
+---
+
+### Postman API Testing
+
+![Postman](assets/images/postman-login.png)
 
 ---
 
