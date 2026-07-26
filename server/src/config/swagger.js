@@ -4,9 +4,9 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Gym Management API",
+      title: "Blog Management API",
       version: "1.0.0",
-      description: "Backend API for Gym Management System",
+      description: "Backend API for Blog Management System",
       contact: {
         name: "Darya",
         email: "Darya@email.com"
@@ -26,7 +26,7 @@ const options = {
       {
 url:
       process.env.NODE_ENV === "production"
-        ? "https://gym-management-system-htx3.onrender.com"
+        ? "https://blog-management-system-htx3.onrender.com"
         : "http://localhost:5000",
       },
     ],
