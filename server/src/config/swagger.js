@@ -26,7 +26,7 @@ const options = {
       {
 url:
       process.env.NODE_ENV === "production"
-        ? "https://blog-management-system-htx3.onrender.com"
+        ? "https://blog-management-api-s7dj.onrender.com"
         : "http://localhost:5000",
       },
     ],
