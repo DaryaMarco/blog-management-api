@@ -273,7 +273,6 @@ User
  | 1 : Many
  |
  ↓
-
 Posts
 ```
 
@@ -306,13 +305,13 @@ Comments
 ## Clone Repository
 
 ```bash
-git clone https://github.com/DaryaMarco/gym-management-system.git
+git clone https://github.com/DaryaMarco/blog-management-api.git
 ```
 
 ## Go to Project Directory
 
 ```bash
-cd gym-management-system/server
+cd blog-management-system/server
 ```
 
 ## Install Dependencies
