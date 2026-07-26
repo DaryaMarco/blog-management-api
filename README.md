@@ -12,6 +12,7 @@
 A production-ready Blog Management API built with Node.js, Express, MongoDB, JWT authentication, Swagger, testing, and scalable backend architecture.
 
 ---
+
 ## Overview
 
 Blog Management API is a production-ready backend application designed to manage users, posts, and content through a secure and scalable RESTful API.
@@ -25,6 +26,7 @@ This project demonstrates the implementation of a real-world content management 
 # Features
 
 ## Authentication & Authorization
+
 - User registration and authentication
 - Secure password hashing
 - JWT-based authentication
@@ -39,6 +41,7 @@ This project demonstrates the implementation of a real-world content management 
 - Automated API testing
 
 ## Posts Management
+
 - Create post
 - Get all posts
 - Search posts
@@ -49,6 +52,7 @@ This project demonstrates the implementation of a real-world content management 
 - Owner permission checking
 
 ## Comments System
+
 - Create comments
 - Get comments by post
 - Update comments
@@ -56,22 +60,26 @@ This project demonstrates the implementation of a real-world content management 
 - Comment ownership validation
 
 ## Validation & Error Handling
+
 - Request validation using Joi
 - Centralized error handling middleware
 - Custom AppError class
 - Proper HTTP status codes
 
 ## Security
+
 - Helmet security headers
 - Express Rate Limit
 - Mongo Sanitize
 - Password hashing with bcrypt
 
 ## Logging
+
 - HTTP request logging with Morgan
 - Application logging with Winston
 
 ## Documentation & Testing
+
 - Swagger API Documentation
 - Integration testing with Jest
 - API testing with Supertest
@@ -129,7 +137,6 @@ Authentication Middleware verifies token
 |
 ↓
 Controller accesses authenticated user data
-
 
 ### Login Process
 
@@ -201,6 +208,7 @@ server
 ```
 
 ---
+
 ## Database Schema
 
 The project uses MongoDB with Mongoose ODM for database modeling.
@@ -226,14 +234,14 @@ User
 
 ### User Model
 
-| Field | Type | Description |
-|---|---|---|
-| `_id` | ObjectId | Unique identifier |
-| `name` | String | User full name |
-| `email` | String | Unique user email |
-| `password` | String | Hashed password |
-| `createdAt` | Date | Account creation date |
-| `updatedAt` | Date | Last update date |
+| Field       | Type     | Description           |
+| ----------- | -------- | --------------------- |
+| `_id`       | ObjectId | Unique identifier     |
+| `name`      | String   | User full name        |
+| `email`     | String   | Unique user email     |
+| `password`  | String   | Hashed password       |
+| `createdAt` | Date     | Account creation date |
+| `updatedAt` | Date     | Last update date      |
 
 ---
 
@@ -254,14 +262,14 @@ Post
 
 ### Post Model
 
-| Field | Type | Description |
-|---|---|---|
-| `_id` | ObjectId | Unique identifier |
-| `title` | String | Post title |
-| `content` | String | Post content |
-| `author` | ObjectId | Reference to User collection |
-| `createdAt` | Date | Post creation date |
-| `updatedAt` | Date | Last update date |
+| Field       | Type     | Description                  |
+| ----------- | -------- | ---------------------------- |
+| `_id`       | ObjectId | Unique identifier            |
+| `title`     | String   | Post title                   |
+| `content`   | String   | Post content                 |
+| `author`    | ObjectId | Reference to User collection |
+| `createdAt` | Date     | Post creation date           |
+| `updatedAt` | Date     | Last update date             |
 
 ---
 
@@ -281,25 +289,26 @@ A single user can create multiple posts.
 The relationship is implemented using MongoDB ObjectId references with Mongoose.
 
 Comment
- |
- ├── _id
- ├── content
- ├── user
- ├── post
- ├── createdAt
- └── updatedAt
+|
+├── \_id
+├── content
+├── user
+├── post
+├── createdAt
+└── updatedAt
 
- User
- |
- | 1 : Many
- ↓
+User
+|
+| 1 : Many
+↓
 Posts
- |
- | 1 : Many
- ↓
+|
+| 1 : Many
+↓
 Comments
 
- ---
+---
+
 # Installation
 
 ## Clone Repository
@@ -331,7 +340,7 @@ Example:
 ```env
 PORT=5000
 
-MONGO_URI=mongodb://127.0.0.1:27017/gym
+MONGO_URI=mongodb://127.0.0.1:27017/blog
 
 JWT_SECRET=your_secret_key
 
