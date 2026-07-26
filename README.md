@@ -1,4 +1,4 @@
-# Gym Management System
+# Blog Management REST API
 
 ![Node.js](https://img.shields.io/badge/Node.js-24.x-green)
 ![Express](https://img.shields.io/badge/Express-5.x-black)
@@ -9,22 +9,34 @@
 ![Render](https://img.shields.io/badge/Deploy-Render-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-# Gym Management API
-
-A RESTful API for a Gym Management System built with Node.js, Express.js, MongoDB, and modern backend practices.
-
-This project demonstrates authentication, authorization, CRUD operations, validation, error handling, logging, API documentation, and automated testing.
+A production-ready Blog Management API built with Node.js, Express, MongoDB, JWT authentication, Swagger, testing, and scalable backend architecture.
 
 ---
+## Overview
+
+Blog Management API is a production-ready backend application designed to manage users, posts, and content through a secure and scalable RESTful API.
+
+The project provides a complete backend solution for creating, managing, and organizing blog content with secure authentication, role-based access control, data validation, and efficient API architecture.
+
+The application follows professional backend development practices including separation of concerns, repository pattern, service layer architecture, centralized error handling, API documentation, and automated testing.
+
+This project demonstrates the implementation of a real-world content management system using modern backend technologies and scalable development principles.
 
 # Features
 
 ## Authentication & Authorization
-- User registration
-- User login
-- JWT based authentication
-- Role-based authorization
-- Protected routes
+- User registration and authentication
+- Secure password hashing
+- JWT-based authentication
+- Create, update, and delete blog posts
+- User-based post ownership
+- Search functionality
+- Pagination and sorting
+- Request validation
+- Centralized error handling
+- RESTful API design
+- Swagger API documentation
+- Automated API testing
 
 ## Posts Management
 - Create post
@@ -83,6 +95,57 @@ This project demonstrates authentication, authorization, CRUD operations, valida
 - JWT
 - bcrypt
 
+## Authentication Flow
+
+The authentication system is implemented using JWT-based authentication.
+
+Authentication flow:
+
+User
+|
+↓
+Register / Login Request
+|
+↓
+Auth Controller
+|
+↓
+Auth Service
+|
+↓
+Password hashing with bcrypt
+|
+↓
+JWT token generation
+|
+↓
+Client receives access token
+|
+↓
+Protected API requests send JWT token
+|
+↓
+Authentication Middleware verifies token
+|
+↓
+Controller accesses authenticated user data
+
+
+### Login Process
+
+1. User sends email and password.
+2. Server verifies user credentials.
+3. Password is compared using bcrypt.
+4. A JWT token is generated.
+5. The token is returned to the client.
+
+### Protected Routes
+
+Protected endpoints require a valid JWT token:
+Authorization: Bearer <token>
+
+The authentication middleware validates the token before allowing access to protected resources.
+
 ## Validation
 
 - Joi
@@ -138,7 +201,106 @@ server
 ```
 
 ---
+## Database Schema
 
+The project uses MongoDB with Mongoose ODM for database modeling.
+
+The main collections are:
+
+---
+
+## User Collection
+
+Stores registered user information.
+
+```
+User
+ |
+ ├── _id
+ ├── name
+ ├── email
+ ├── password
+ ├── createdAt
+ └── updatedAt
+```
+
+### User Model
+
+| Field | Type | Description |
+|---|---|---|
+| `_id` | ObjectId | Unique identifier |
+| `name` | String | User full name |
+| `email` | String | Unique user email |
+| `password` | String | Hashed password |
+| `createdAt` | Date | Account creation date |
+| `updatedAt` | Date | Last update date |
+
+---
+
+## Post Collection
+
+Stores blog posts created by users.
+
+```
+Post
+ |
+ ├── _id
+ ├── title
+ ├── content
+ ├── author
+ ├── createdAt
+ └── updatedAt
+```
+
+### Post Model
+
+| Field | Type | Description |
+|---|---|---|
+| `_id` | ObjectId | Unique identifier |
+| `title` | String | Post title |
+| `content` | String | Post content |
+| `author` | ObjectId | Reference to User collection |
+| `createdAt` | Date | Post creation date |
+| `updatedAt` | Date | Last update date |
+
+---
+
+## Database Relationship
+
+```
+User
+ |
+ | 1 : Many
+ |
+ ↓
+
+Posts
+```
+
+A single user can create multiple posts.
+
+The relationship is implemented using MongoDB ObjectId references with Mongoose.
+
+Comment
+ |
+ ├── _id
+ ├── content
+ ├── user
+ ├── post
+ ├── createdAt
+ └── updatedAt
+
+ User
+ |
+ | 1 : Many
+ ↓
+Posts
+ |
+ | 1 : Many
+ ↓
+Comments
+
+ ---
 # Installation
 
 ## Clone Repository
@@ -221,10 +383,9 @@ Test coverage includes:
 
 Swagger documentation is available at:
 
-```
+```text
 https://gym-management-system-htx3.onrender.com/api-docs
-
----
+```
 
 ## Live Demo
 
@@ -378,7 +539,6 @@ Implemented security measures:
 
 Possible future enhancements:
 
-- Docker containerization
 - CI/CD pipeline
 - AWS deployment
 - User profile management
