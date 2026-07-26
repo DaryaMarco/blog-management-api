@@ -383,18 +383,18 @@ Test coverage includes:
 Swagger documentation is available at:
 
 ```text
-https://gym-management-system-htx3.onrender.com/api-docs
+https://blog-management-system-htx3.onrender.com/api-docs
 ```
 
 ## Live Demo
 
 API:
 
-https://gym-management-system-htx3.onrender.com
+https://blog-management-system-htx3.onrender.com
 
 Swagger:
 
-https://gym-management-system-htx3.onrender.com/api-docs
+https://blog-management-system-htx3.onrender.com/api-docs
 
 ---
 
