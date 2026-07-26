@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/user.model");
 
-mongoose.connect("mongodb://localhost:27017/gym-management")
+mongoose.connect("mongodb://localhost:27017/blog-management")
 .then(async () => {
 
   await User.updateMany(

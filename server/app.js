@@ -62,7 +62,7 @@ app.get("/test-error", (req,res,next)=>{
 app.use(errorHandler);
 
 app.get("/", (req, res) => {
-  res.send("Gym API is running...");
+  res.send("Blog API is running...");
 });
 
 module.exports = app;

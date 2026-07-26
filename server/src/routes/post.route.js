@@ -30,7 +30,7 @@ const checkPostOwner = require("../middleware/checkPostOwner");
  *                 example: My first post
  *               content:
  *                 type: string
- *                 example: This is my gym article
+ *                 example: This is my blog article
  *     responses:
  *       201:
  *         description: Post created successfully
@@ -97,7 +97,7 @@ router.get("/:id",asyncHandler(getPost));
  *             properties:
  *               title:
  *                 type: string
- *                 example: Updated gym article
+ *                 example: Updated blog article
  *               content:
  *                 type: string
  *                 example: Updated content from Swagger

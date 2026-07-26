@@ -6,7 +6,7 @@ const options = {
     info: {
       title: "Blog Management API",
       version: "1.0.0",
-      description: "Backend API for Blog Management System",
+      description: "A production-ready Blog Management REST API built with Node.js, Express, MongoDB, JWT Authentication, Swagger and automated testing.",
       contact: {
         name: "Darya",
         email: "Darya@email.com"
