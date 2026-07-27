@@ -302,7 +302,7 @@ Main collections:
 # User Collection
 
 Stores registered user information.
-
+---
 
 User
 |
@@ -312,10 +312,10 @@ User
 ├── password
 ├── createdAt
 └── updatedAt
-
+---
 
 ## User Model
-
+---
 | Field | Type | Description |
 |---|---|---|
 | _id | ObjectId | Unique identifier |
@@ -340,7 +340,7 @@ Post
 ├── author
 ├── createdAt
 └── updatedAt
-
+---
 ---
 ## Post Model
 ---
