@@ -331,7 +331,7 @@ User
 
 Stores blog posts created by users.
 
-
+---
 Post
 |
 ├── _id
@@ -341,9 +341,9 @@ Post
 ├── createdAt
 └── updatedAt
 
-
+---
 ## Post Model
-
+---
 | Field | Type | Description |
 |---|---|---|
 | _id | ObjectId | Unique identifier |
