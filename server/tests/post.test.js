@@ -355,8 +355,7 @@ describe("GET Posts API", () => {
         .send({
             content: "Only content"
         });
-        console.log(res.statusCode);
-        console.log(res.body);
+      
         expect(res.statusCode).toBe(400);
 
     });

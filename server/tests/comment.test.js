@@ -173,7 +173,6 @@ describe("comment API" , ()=>{
                 title:"Test post",
                 content:"Post body"
             });
-                console.log(postRes.body);
 
             const postId = postRes.body.post._id;
 
