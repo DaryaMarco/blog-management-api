@@ -31,16 +31,14 @@ Blog Management API is a production-ready backend application designed to manage
 
 The project demonstrates professional backend development practices including:
 
-- Clean architecture principles
+- Clean architecture
 - Separation of concerns
 - Repository pattern
 - Service layer architecture
 - Centralized error handling
 - Secure authentication
 - API documentation
-- Automated integration testing
-
-The system provides complete functionality for creating, managing, and organizing blog content with authentication, authorization, validation, and ownership-based access control.
+- Automated testing
 
 ---
 
@@ -50,11 +48,10 @@ The system provides complete functionality for creating, managing, and organizin
 
 - User registration
 - User login
-- Secure password hashing with bcrypt
-- JWT-based authentication
+- Password hashing with bcrypt
+- JWT authentication
 - Protected routes
 - User ownership validation
-- Authorization middleware
 
 ---
 
@@ -67,7 +64,7 @@ The system provides complete functionality for creating, managing, and organizin
 - Delete posts
 - Search posts
 - Pagination
-- Sorting (newest / oldest)
+- Sorting
 - Owner permission checking
 
 ---
@@ -84,11 +81,11 @@ The system provides complete functionality for creating, managing, and organizin
 
 ## Validation & Error Handling
 
-- Request validation using Joi
+- Joi request validation
 - Centralized error handling middleware
 - Custom AppError class
 - Proper HTTP status codes
-- Structured API error responses
+- Structured API responses
 
 ---
 
@@ -97,32 +94,12 @@ The system provides complete functionality for creating, managing, and organizin
 Implemented security practices:
 
 - JWT authentication
-- Password hashing
+- bcrypt password hashing
 - Helmet security headers
-- Express Rate Limiting
+- Express Rate Limit
 - MongoDB injection protection
 - Input sanitization
 
----
-
-## Logging
-
-Application logging includes:
-
-- HTTP request logging with Morgan
-- Application logging with Winston
-
----
-
-## Documentation & Testing
-
-- Swagger OpenAPI documentation
-- Jest testing framework
-- Supertest API testing
-- Authentication tests
-- Authorization tests
-- Validation tests
-- Edge case testing
 ---
 
 # Tech Stack
@@ -136,7 +113,7 @@ Application logging includes:
 
 ## Authentication
 
-- JSON Web Token (JWT)
+- JWT
 - bcrypt
 
 ## Validation
@@ -150,25 +127,15 @@ Application logging includes:
 
 ## Documentation
 
-- Swagger (OpenAPI)
-
-## Security
-
-- Helmet
-- Express Rate Limit
-- express-mongo-sanitize
-- xss-clean
+- Swagger OpenAPI
 
 ## Logging
 
 - Morgan
 - Winston
 
-## Development Tools
+## Deployment
 
-- Git
-- GitHub
-- Postman
 - Render
 - MongoDB Atlas
 
@@ -200,13 +167,15 @@ Model
 MongoDB
 
 
-## Authentication Flow
+---
+
+# Authentication Flow
 
 
 User
 |
 ↓
-Register / Login Request
+Register / Login
 |
 ↓
 Auth Controller
@@ -215,7 +184,7 @@ Auth Controller
 Auth Service
 |
 ↓
-Password Hashing (bcrypt)
+bcrypt Password Hashing
 |
 ↓
 JWT Token Generation
@@ -224,7 +193,7 @@ JWT Token Generation
 Client Receives Token
 |
 ↓
-Protected Requests
+Protected API Request
 |
 ↓
 Authentication Middleware
@@ -233,14 +202,7 @@ Authentication Middleware
 Controller Access
 
 
-### Login Process
-
-1. User sends email and password.
-2. Server validates user credentials.
-3. Password is compared using bcrypt.
-4. JWT token is generated.
-5. Token is returned to the client.
-6. Protected routes require:
+Protected routes require:
 
 
 Authorization: Bearer <token>
@@ -250,107 +212,52 @@ Authorization: Bearer <token>
 
 # Project Structure
 
-```
+
 server
-│
+|
 ├── src
-│   │
-│   ├── config
-│   │   ├── db.js
-│   │   ├── env.js
-│   │   ├── logger.js
-│   │   └── swagger.js
-│   │
-│   ├── controllers
-│   │
-│   ├── middleware
-│   │
-│   ├── models
-│   │
-│   ├── repositories
-│   │
-│   ├── routes
-│   │
-│   ├── services
-│   │
-│   ├── validations
-│   │
-│   └── utils
-│
+| |
+| ├── config
+| | ├── db.js
+| | ├── env.js
+| | ├── logger.js
+| | └── swagger.js
+| |
+| ├── controllers
+| |
+| ├── middleware
+| |
+| ├── models
+| |
+| ├── repositories
+| |
+| ├── routes
+| |
+| ├── services
+| |
+| ├── validations
+| |
+| └── utils
+|
 ├── tests
-│
+|
 ├── app.js
 ├── server.js
 ├── package.json
 └── .env.example
-```
+
 
 ---
 
 # Database Design
 
-The project uses MongoDB with Mongoose ODM for database modeling.
+MongoDB with Mongoose is used for database modeling.
 
 Main collections:
 
 - Users
 - Posts
 - Comments
-
----
-
-# User Collection
-
-Stores registered user information.
----
-
-User
-|
-├── _id
-├── name
-├── email
-├── password
-├── createdAt
-└── updatedAt
----
-
-## User Model
----
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| name | String | User full name |
-| email | String | Unique email |
-| password | String | Hashed password |
-| createdAt | Date | Account creation date |
-| updatedAt | Date | Last update date |
-
----
----
-# Post Collection
-
-Stores blog posts created by users.
----
----
-Post
-|
-├── _id
-├── title
-├── content
-├── author
-├── createdAt
-└── updatedAt
----
-## Post Model
----
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| title | String | Post title |
-| content | String | Post content |
-| author | ObjectId | Reference to User |
-| createdAt | Date | Creation date |
-| updatedAt | Date | Last update date |
 
 ---
 
@@ -370,9 +277,7 @@ Posts
 Comments
 
 
-A user can create multiple posts, and each post can contain multiple comments.
-
-Relationships are implemented using MongoDB ObjectId references with Mongoose.
+A user can create multiple posts and each post can contain multiple comments.
 
 ---
 
@@ -382,15 +287,13 @@ Relationships are implemented using MongoDB ObjectId references with Mongoose.
 
 ```bash
 git clone https://github.com/DaryaMarco/blog-management-api.git
-Go to Project Directory
+Go To Project Directory
 cd blog-management-api/server
 Install Dependencies
 npm install
 Environment Variables
 
-Create a .env file inside the server directory.
-
-Example:
+Create a .env file:
 
 PORT=5000
 
@@ -402,136 +305,104 @@ JWT_EXPIRES_IN=7d
 
 NODE_ENV=development
 
-For production deployment, environment variables are configured in Render.
+Production environment variables are configured in Render.
 
-Required production variables:
-
-MONGO_URI
-JWT_SECRET
-JWT_EXPIRES_IN
-NODE_ENV=production
 Running The Project
-Development Mode
+Development
 npm run dev
-Production Mode
+Production
 npm start
-Running Tests
+Testing
 
-Run all tests:
+Run tests:
 
 npm test
 
-Testing covers:
+Tests include:
 
-Authentication flow
-User registration
-User login
-Protected routes
+Authentication tests
+Authorization tests
 CRUD operations
-Authorization checks
 Validation errors
-Invalid ObjectId handling
+Invalid IDs
+Permission checks
 Edge cases
 Deployment
 
 The API is deployed using Render.
 
-Production API
+Production URL:
+
 https://blog-management-api-s7dj.onrender.com
-Database
 
-MongoDB Atlas is used as the production database.
+Database:
 
+MongoDB Atlas
 API Documentation
 
-Swagger OpenAPI documentation:
+Swagger:
 
 https://blog-management-api-s7dj.onrender.com/api-docs
-
-Swagger provides interactive API documentation and allows testing endpoints directly from the browser.
-
 API Endpoints
 Authentication
-Register
+
+Register:
+
 POST /api/auth/register
-Login
+
+Login:
+
 POST /api/auth/login
 Posts
-Get All Posts
+
+Get Posts:
+
 GET /api/posts
-Create Post
+
+Create Post:
+
 POST /api/posts
 
-Authentication required.
+Update Post:
 
-Header:
-
-Authorization: Bearer <token>
-Update Post
 PUT /api/posts/:id
 
-Authentication required.
+Delete Post:
 
-Delete Post
 DELETE /api/posts/:id
-
-Authentication required.
-
 Comments
-Create Comment
+
+Create Comment:
+
 POST /api/posts/:postId/comments
 
-Authentication required.
+Get Comments:
 
-Get Comments
 GET /api/posts/:postId/comments
-Update Comment
+
+Update Comment:
+
 PUT /api/posts/:postId/comments/:commentId
 
-Authentication required.
+Delete Comment:
 
-Delete Comment
 DELETE /api/posts/:postId/comments/:commentId
-
-Authentication required.
-
-Error Handling
-
-The API implements centralized error handling:
-
-Custom error classes
-Middleware-based error processing
-Structured error responses
-Proper HTTP status codes
-Winston logging
 Security Practices
 
-Implemented security features:
+Implemented:
 
 JWT authentication
-Password hashing with bcrypt
+Password hashing
 Request validation
 Rate limiting
-Secure HTTP headers
-MongoDB injection protection
-Input sanitization
+Secure headers
+MongoDB sanitization
 Future Improvements
-
-Possible future enhancements:
-
-CI/CD pipeline with GitHub Actions
-Cloud deployment with AWS
-User profile management
+CI/CD with GitHub Actions
+AWS deployment
+React frontend
 File upload system
-React frontend application
-Advanced role-based access control
-Screenshots
-Swagger Documentation
-
-Live API on Render
-
-Postman API Testing
-
+Advanced role management
 License
 
 This project is created for learning purposes and portfolio demonstration.
