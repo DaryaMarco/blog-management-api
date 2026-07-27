@@ -6,41 +6,33 @@
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![Jest](https://img.shields.io/badge/Test-Jest-red)
 ![Swagger](https://img.shields.io/badge/API-Swagger-brightgreen)
+![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Render](https://img.shields.io/badge/Deploy-Render-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-A production-ready Blog Management REST API built with Node.js, Express.js, MongoDB, JWT authentication, Swagger documentation, automated testing, and scalable backend architecture.
-
----
-
-# Live Demo
-
-## Production API
-
-https://blog-management-api-s7dj.onrender.com
-
-## Swagger Documentation
-
-https://blog-management-api-s7dj.onrender.com/api-docs
+A production-ready Blog Management REST API built with Node.js, Express.js, MongoDB, JWT authentication, Swagger documentation, automated testing, Docker containerization, and scalable backend architecture.
 
 ---
 
 # Overview
 
-Blog Management API is a production-ready backend application designed to manage users, blog posts, and comments through a secure and scalable RESTful API.
+Blog Management API is a backend application designed to manage users, blog posts, and comments through a secure and scalable RESTful API.
 
 The project demonstrates professional backend development practices including:
 
 - Layered architecture
 - Separation of concerns
-- Repository pattern
-- Service layer architecture
-- Centralized error handling
-- Secure authentication
-- API documentation
-- Automated testing
+- Repository Pattern
+- Service Layer Architecture
+- Centralized Error Handling
+- JWT Authentication
+- Request Validation
+- Security Practices
+- Automated Testing
+- API Documentation
+- Docker Deployment
 
-This project represents a real-world backend system with authentication, authorization, validation, security practices, and production deployment.
+This project represents a real-world backend system suitable for portfolio demonstration.
 
 ---
 
@@ -50,10 +42,11 @@ This project represents a real-world backend system with authentication, authori
 
 - User registration
 - User login
-- Password hashing with bcrypt
+- Password hashing using bcrypt
 - JWT-based authentication
 - Protected routes
 - User ownership validation
+- Authorization middleware
 
 ---
 
@@ -71,7 +64,7 @@ This project represents a real-world backend system with authentication, authori
 
 ---
 
-## Comments System
+## Comments Management
 
 - Create comments
 - Get comments by post
@@ -96,11 +89,12 @@ This project represents a real-world backend system with authentication, authori
 Implemented security practices:
 
 - JWT authentication
-- Password hashing
+- Password hashing with bcrypt
 - Helmet security headers
 - Express Rate Limit
 - MongoDB injection protection
 - Input sanitization
+- Request validation
 
 ---
 
@@ -136,17 +130,23 @@ Implemented security practices:
 - Morgan
 - Winston
 
+## DevOps
+
+- Docker
+- Docker Compose
+
 ## Deployment
 
 - Render
 - MongoDB Atlas
+
 ---
 
 # Architecture
 
 The application follows a layered backend architecture:
 
-```
+```text
 Request
    |
    ↓
@@ -172,9 +172,9 @@ MongoDB
 
 # Authentication Flow
 
-The authentication system is implemented using JWT-based authentication.
+The authentication system is implemented using JWT.
 
-```
+```text
 User
  |
  ↓
@@ -205,18 +205,9 @@ Authentication Middleware
 Controller Access
 ```
 
-## Login Process
-
-1. User sends email and password.
-2. Server validates user credentials.
-3. Password is compared using bcrypt.
-4. JWT token is generated.
-5. Token is returned to the client.
-6. Client sends the token for protected requests.
-
 Protected routes require:
 
-```
+```http
 Authorization: Bearer <token>
 ```
 
@@ -224,7 +215,7 @@ Authorization: Bearer <token>
 
 # Project Structure
 
-```
+```text
 server
 |
 ├── src
@@ -253,6 +244,8 @@ server
 |
 ├── tests
 |
+├── Dockerfile
+├── docker-compose.yml
 ├── app.js
 ├── server.js
 ├── package.json
@@ -263,7 +256,7 @@ server
 
 # Database Design
 
-The project uses MongoDB with Mongoose ODM for database modeling.
+MongoDB is used with Mongoose ODM.
 
 Main collections:
 
@@ -273,65 +266,9 @@ Main collections:
 
 ---
 
-# User Collection
-
-Stores registered user information.
-
-```
-User
- |
- ├── _id
- ├── name
- ├── email
- ├── password
- ├── createdAt
- └── updatedAt
-```
-
-## User Model
-
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| name | String | User full name |
-| email | String | Unique email |
-| password | String | Hashed password |
-| createdAt | Date | Account creation date |
-| updatedAt | Date | Last update date |
-
----
-
-# Post Collection
-
-Stores blog posts created by users.
-
-```
-Post
- |
- ├── _id
- ├── title
- ├── content
- ├── author
- ├── createdAt
- └── updatedAt
-```
-
-## Post Model
-
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| title | String | Post title |
-| content | String | Post content |
-| author | ObjectId | Reference to User |
-| createdAt | Date | Post creation date |
-| updatedAt | Date | Last update date |
-
----
-
 # Database Relationship
 
-```
+```text
 User
  |
  | 1 : Many
@@ -345,11 +282,60 @@ Posts
 Comments
 ```
 
-A single user can create multiple posts, and each post can contain multiple comments.
+A user can create multiple posts, and every post can contain multiple comments.
 
-The relationships are implemented using MongoDB ObjectId references with Mongoose.
+Relationships are implemented using MongoDB ObjectId references.
 
 ---
+
+# User Model
+
+```text
+User
+
+_id
+name
+email
+password
+createdAt
+updatedAt
+```
+
+| Field | Type | Description |
+|---|---|---|
+| _id | ObjectId | Unique identifier |
+| name | String | User name |
+| email | String | Unique email |
+| password | String | Hashed password |
+| createdAt | Date | Creation date |
+| updatedAt | Date | Update date |
+
+---
+
+# Post Model
+
+```text
+Post
+
+_id
+title
+content
+author
+createdAt
+updatedAt
+```
+
+| Field | Type | Description |
+|---|---|---|
+| _id | ObjectId | Unique identifier |
+| title | String | Post title |
+| content | String | Post content |
+| author | ObjectId | User reference |
+| createdAt | Date | Creation date |
+| updatedAt | Date | Update date |
+
+---
+
 # Installation
 
 ## Clone Repository
@@ -360,7 +346,7 @@ git clone https://github.com/DaryaMarco/blog-management-api.git
 
 ---
 
-## Go To Project Directory
+## Enter Project Directory
 
 ```bash
 cd blog-management-api/server
@@ -378,9 +364,7 @@ npm install
 
 # Environment Variables
 
-Create a `.env` file inside the server directory.
-
-Example:
+Create `.env` file:
 
 ```env
 PORT=5000
@@ -394,11 +378,9 @@ JWT_EXPIRES_IN=7d
 NODE_ENV=development
 ```
 
-For production deployment, environment variables are configured in Render.
+Production variables:
 
-Required production variables:
-
-```
+```text
 MONGO_URI
 JWT_SECRET
 JWT_EXPIRES_IN
@@ -407,7 +389,7 @@ NODE_ENV
 
 ---
 
-# Running The Project
+# Running Project
 
 ## Development Mode
 
@@ -425,9 +407,48 @@ npm start
 
 ---
 
-# Running Tests
+# Docker Deployment
 
-Run all tests:
+The application is fully containerized using Docker Compose.
+
+Services:
+
+```text
+API Container
+     |
+     |
+MongoDB Container
+```
+
+Run:
+
+```bash
+docker compose up --build
+```
+
+Stop containers:
+
+```bash
+docker compose down
+```
+
+Check running containers:
+
+```bash
+docker ps
+```
+
+View logs:
+
+```bash
+docker logs blog-api
+```
+
+---
+
+# Testing
+
+Run tests:
 
 ```bash
 npm test
@@ -447,31 +468,18 @@ Test coverage includes:
 
 ---
 
-# Deployment
+# Logging
 
-The API is deployed using Render.
+The application uses:
 
-## Production API
+- Morgan for HTTP request logging
+- Winston for application logs
 
-```
-https://blog-management-api-s7dj.onrender.com
-```
+Logs help with:
 
-## Database
-
-MongoDB Atlas is used as the production database.
-
----
-
-# API Documentation
-
-Swagger documentation:
-
-```
-https://blog-management-api-s7dj.onrender.com/api-docs
-```
-
-Swagger provides interactive API documentation and allows testing endpoints directly from the browser.
+- Debugging
+- Error tracking
+- Production monitoring
 
 ---
 
@@ -481,13 +489,13 @@ Swagger provides interactive API documentation and allows testing endpoints dire
 
 ### Register
 
-```
+```http
 POST /api/auth/register
 ```
 
 ### Login
 
-```
+```http
 POST /api/auth/login
 ```
 
@@ -495,35 +503,35 @@ POST /api/auth/login
 
 # Posts
 
-## Get All Posts
+### Get All Posts
 
-```
+```http
 GET /api/posts
 ```
 
-## Create Post
+### Create Post
 
-```
+```http
 POST /api/posts
 ```
 
-Authentication required:
+Authentication:
 
-```
+```http
 Authorization: Bearer <token>
 ```
 
-## Update Post
+### Update Post
 
-```
+```http
 PUT /api/posts/:id
 ```
 
 Authentication required.
 
-## Delete Post
+### Delete Post
 
-```
+```http
 DELETE /api/posts/:id
 ```
 
@@ -533,9 +541,9 @@ Authentication required.
 
 # Comments
 
-## Create Comment
+### Create Comment
 
-```
+```http
 POST /api/posts/:postId/comments
 ```
 
@@ -543,17 +551,17 @@ Authentication required.
 
 ---
 
-## Get Comments
+### Get Comments
 
-```
+```http
 GET /api/posts/:postId/comments
 ```
 
 ---
 
-## Update Comment
+### Update Comment
 
-```
+```http
 PUT /api/posts/:postId/comments/:commentId
 ```
 
@@ -561,13 +569,38 @@ Authentication required.
 
 ---
 
-## Delete Comment
+### Delete Comment
 
-```
+```http
 DELETE /api/posts/:postId/comments/:commentId
 ```
 
 Authentication required.
+
+---
+
+# API Response Example
+
+Successful response:
+
+```json
+{
+  "success": true,
+  "data": {
+    "title": "My First Post",
+    "content": "Hello World"
+  }
+}
+```
+
+Error response:
+
+```json
+{
+  "success": false,
+  "message": "Resource not found"
+}
+```
 
 ---
 
@@ -576,75 +609,77 @@ Authentication required.
 The API uses centralized error handling with:
 
 - Custom error classes
-- Middleware-based error processing
-- Structured error responses
-- Proper HTTP status codes
+- Middleware-based processing
+- Structured responses
 - Winston logging
+- HTTP status management
 
 ---
 
 # Security Practices
 
-Implemented security measures:
+Implemented:
 
 - JWT authentication
-- Password hashing with bcrypt
-- Request validation
+- Password hashing
+- Input validation
 - Rate limiting
 - Secure HTTP headers
 - MongoDB injection protection
-- Input sanitization
+- Sanitization middleware
 
 ---
 
-## Features
+# Deployment
 
-- User Authentication (JWT)
-- Register / Login
-- CRUD Posts
-- CRUD Comments
-- Pagination
-- Search
-- Authorization
-- Error Handling
-- Logging
-- Dockerized Application
+Production deployment:
 
+```text
+Render
++
+MongoDB Atlas
+```
 
-## Tech Stack
-
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT
-- Docker
-- Docker Compose
-
-
-## Project Structure
---- 
-server
-├── controllers
-├── services
-├── repositories
-|----server
-|
-├── routes
-├── middleware
-├── utils
-└── server.js
+Environment variables are configured securely in production.
 
 ---
+
+# Health Check
+
+Example server health endpoint:
+
+```http
+GET /health
+```
+
+Used for:
+
+- Monitoring
+- Deployment verification
+- Server availability checks
+
+---
+
 # Future Improvements
 
-Possible future enhancements:
+Possible improvements:
 
-- CI/CD pipeline with GitHub Actions
+- GitHub Actions CI/CD pipeline
 - AWS deployment
 - React frontend application
 - File upload system
-- Advanced role-based access control
+- Advanced Role Based Access Control
+- Redis caching
+- Background jobs
+- Monitoring with Prometheus/Grafana
+
+---
+
+# Author
+
+Created by Darya
+
+Backend Developer Portfolio Project
 
 ---
 
