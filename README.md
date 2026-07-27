@@ -596,7 +596,51 @@ Implemented security measures:
 - Input sanitization
 
 ---
+# Blog Management System 🚀
 
+A production-ready Blog Management API built with Node.js, Express, MongoDB and Docker.
+
+
+## Features
+
+- User Authentication (JWT)
+- Register / Login
+- CRUD Posts
+- CRUD Comments
+- Pagination
+- Search
+- Authorization
+- Error Handling
+- Logging
+- Dockerized Application
+
+
+## Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Docker
+- Docker Compose
+
+
+## Project Structure
+
+---
+server
+│
+├── controllers
+├── services
+├── repositories
+├── models
+├── routes
+├── middleware
+├── utils
+└── server.js
+
+---
 # Future Improvements
 
 Possible future enhancements:

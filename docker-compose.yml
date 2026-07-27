@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  api:
+    container_name: blog-api
+    restart: unless-stopped
+
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - ./server/.env
+
+    depends_on:
+      - mongo
+
+
+  mongo:
+    container_name: blog-mongodb
+    restart: unless-stopped
+
+    image: mongo:7
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongo_data:/data/db
+
+
+volumes:
+  mongo_data:
