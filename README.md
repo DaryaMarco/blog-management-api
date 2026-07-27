@@ -628,7 +628,8 @@ server
 ├── controllers
 ├── services
 ├── repositories
-├── models
+|----server
+|
 ├── routes
 ├── middleware
 ├── utils
