@@ -326,11 +326,11 @@ User
 | updatedAt | Date | Last update date |
 
 ---
-
+---
 # Post Collection
 
 Stores blog posts created by users.
-
+---
 ---
 Post
 |
@@ -340,7 +340,6 @@ Post
 ├── author
 ├── createdAt
 └── updatedAt
----
 ---
 ## Post Model
 ---
