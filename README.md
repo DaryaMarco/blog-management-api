@@ -625,7 +625,6 @@ Implemented security measures:
 ## Project Structure
 --- 
 server
-│
 ├── controllers
 ├── services
 ├── repositories
