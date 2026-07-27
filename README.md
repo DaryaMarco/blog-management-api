@@ -596,10 +596,6 @@ Implemented security measures:
 - Input sanitization
 
 ---
-# Blog Management System 🚀
-
-A production-ready Blog Management API built with Node.js, Express, MongoDB and Docker.
-
 
 ## Features
 
@@ -627,8 +623,7 @@ A production-ready Blog Management API built with Node.js, Express, MongoDB and 
 
 
 ## Project Structure
-
----
+--- 
 server
 │
 ├── controllers
@@ -639,7 +634,7 @@ server
 ├── middleware
 ├── utils
 └── server.js
-
+---
 ---
 # Future Improvements
 
