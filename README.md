@@ -250,32 +250,32 @@ Authorization: Bearer <token>
 
 # Project Structure
 
-
+```
 server
 │
 ├── src
-│ │
-│ ├── config
-│ │ ├── db.js
-│ │ ├── env.js
-│ │ ├── logger.js
-│ │ └── swagger.js
-│ │
-│ ├── controllers
-│ │
-│ ├── middleware
-│ │
-│ ├── models
-│ │
-│ ├── repositories
-│ │
-│ ├── routes
-│ │
-│ ├── services
-│ │
-│ ├── validations
-│ │
-│ └── utils
+│   │
+│   ├── config
+│   │   ├── db.js
+│   │   ├── env.js
+│   │   ├── logger.js
+│   │   └── swagger.js
+│   │
+│   ├── controllers
+│   │
+│   ├── middleware
+│   │
+│   ├── models
+│   │
+│   ├── repositories
+│   │
+│   ├── routes
+│   │
+│   ├── services
+│   │
+│   ├── validations
+│   │
+│   └── utils
 │
 ├── tests
 │
@@ -283,7 +283,7 @@ server
 ├── server.js
 ├── package.json
 └── .env.example
-
+```
 
 ---
 
