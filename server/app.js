@@ -61,6 +61,14 @@ app.get("/test-error", (req,res,next)=>{
 });
 app.use(errorHandler);
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "API is running",
+    timestamp: new Date()
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Blog API is running...");
 });
