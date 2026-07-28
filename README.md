@@ -2,7 +2,7 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-24.x-green)
 ![Express](https://img.shields.io/badge/Express-5.x-black)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-yellow)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![Jest](https://img.shields.io/badge/Test-Jest-red)
 ![Swagger](https://img.shields.io/badge/API-Swagger-brightgreen)
@@ -301,14 +301,14 @@ createdAt
 updatedAt
 ```
 
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| name | String | User name |
-| email | String | Unique email |
-| password | String | Hashed password |
-| createdAt | Date | Creation date |
-| updatedAt | Date | Update date |
+| Field     | Type     | Description       |
+| --------- | -------- | ----------------- |
+| \_id      | ObjectId | Unique identifier |
+| name      | String   | User name         |
+| email     | String   | Unique email      |
+| password  | String   | Hashed password   |
+| createdAt | Date     | Creation date     |
+| updatedAt | Date     | Update date       |
 
 ---
 
@@ -325,14 +325,14 @@ createdAt
 updatedAt
 ```
 
-| Field | Type | Description |
-|---|---|---|
-| _id | ObjectId | Unique identifier |
-| title | String | Post title |
-| content | String | Post content |
-| author | ObjectId | User reference |
-| createdAt | Date | Creation date |
-| updatedAt | Date | Update date |
+| Field     | Type     | Description       |
+| --------- | -------- | ----------------- |
+| \_id      | ObjectId | Unique identifier |
+| title     | String   | Post title        |
+| content   | String   | Post content      |
+| author    | ObjectId | User reference    |
+| createdAt | Date     | Creation date     |
+| updatedAt | Date     | Update date       |
 
 ---
 
